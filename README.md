@@ -10,7 +10,9 @@
 A primality checker is a function that looks at a number and tells you whether it's prime or not.  
 In this case, I consider a prime number to be a positive integer wholly divisible only by itself and 1.
 The first few prime numbers are { 2, 3, 5, 7, 11, 13, 17, 19, ... }, and notably do not include 1.  
+
 This particular primality checker employs an algorithm I came up with that uses what I guess you could call dynamic programming. For a small donation of only a few kilobytes of memory, you can check up to 20-digit decimal integers in, at most, less than a minute, and usually in a few milliseconds.  
+
 Included in this repository is an implementation of the primality checker function in C++ in `isprime.hpp` (though it should be trivial to implement it in any language that supports arrays and maps), and two command-line utilities for checking numbers: a simple `isprime.cpp` program, and a `countprimes.cpp` program.
 
 ## Building
@@ -60,7 +62,7 @@ First the program will immediately report an estimate of the number of primes wi
 Then the program will exactly count all of the primes within the range, which may take some time depending
 on both the size of the range and the bigness of the numbers in the range.
 Finally the program will report its exact count.  
-Be warned that numbers near 20 digits can take several seconds to check EACH, so it's unwise to request a large range of very big numbers, though the program will gladly spend forever trying.
+Be warned that numbers near 20 digits can take several seconds to check EACH, so it's unwise to request a count of a large range of very big numbers, though the program will gladly spend forever trying.
 
 ## Examples
 
