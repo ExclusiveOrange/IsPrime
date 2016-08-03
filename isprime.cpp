@@ -17,6 +17,12 @@ int main( int argc, char *argv[] )
     return 0;
   }
 
+  cout << num << " is..." << flush;
+
+  bool is = isprime( num );
+
+  cout << "\r";
+
   cout << num << " is " << (isprime( num ) ? "" : "not ") << "prime" << endl;
 
   return 0;
