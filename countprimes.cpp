@@ -29,14 +29,14 @@ int main( int argc, char *argv[] )
   }
 
   cout << "estimated number of primes: "
-    << (estimatePrimeCount( hi ) - estimatePrimeCount( lo ) )
+    << ( estimatePrimeCount( hi ) - estimatePrimeCount( lo ) )
     << endl;
+
+  cout << "counting... " << flush;
 
   uint64_t count = 0;
 
-  for( uint64_t n = lo; n <= hi; n++ ) {
-    count += isprime( n );
-  }
+  for( uint64_t n = lo; n <= hi; n++ ) count += isprime( n );
 
   cout << "the interval [ " << lo << ", " << hi << " ] contains exactly " << count << " primes" << endl;
 
