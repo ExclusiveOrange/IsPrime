@@ -70,14 +70,14 @@ Be warned that numbers near 20 digits can take several seconds to check EACH, so
 
 See `isprime.cpp` and `countprimes.cpp` for examples using the `nprime::isprime()` function in a C++ program.
 
-### `isprime.cpp` program
+### `isprime` terminal program
 
 ```
 > ./isprime 990377764891511
 990377764891511 is prime
 ```
 
-### `countprimes.cpp` program
+### `countprimes` terminal program
 
 ```
 > ./countprimes 1000 1000000
