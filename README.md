@@ -1,4 +1,4 @@
-# uint64 primality checker
+# Primality Checker
 
 * [What](#what)
 * [Building](#building)
