@@ -39,9 +39,10 @@ namespace nprime {
     }
 
     // otherwise starting from the odd number next after the largest known prime,
-    //   check each odd number for primality,
-    //   up to the square root of num;
-    //   and remember numbers up to the 4th root of num since they may be reused soon.
+    //   check each odd number to see if it's a factor,
+    //   and for non-factors, if we haven't reached memLimit, check and remember primality.
+    //   This last part is where the fastness comes from, since it is likely that remembered
+    //     numbers will be checked again before we're done.
     for( uint64_t p = primeList.back() + 2; p <= root2Floor; p += 2 ) {
       if( num % p == 0 ) return false;
       if( memCount < memLimit && isprime( p ) ) {
