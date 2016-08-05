@@ -20,7 +20,7 @@ namespace nprime {
 
   static std::vector<uint64_t> primeList = {2, 3}; // largest number must be odd for the following algorithm
   static std::unordered_set<uint64_t> primeSet = {2, 3};
-  static size_t memCount = 0; 
+  static size_t memCount = 2;
   static const size_t memLimit = 6542; // the number of primes in [0, sqrt(sqrt(2^64))]
 
   bool isprime( uint64_t num )
