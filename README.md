@@ -14,7 +14,7 @@ The first few prime numbers are { 2, 3, 5, 7, 11, 13, 17, 19, ... }, and notably
 This particular primality checker employs an algorithm I came up with that uses what I guess you could call dynamic programming. For a small donation of only a few kilobytes of memory, you can check up to 20-digit decimal integers in at most less than a minute, and usually in a few milliseconds.
 I came up with this algorithm one day when I just needed a short multi-file program to test the SCons build system. I have since decided that while SCons is somewhat bad, this algorithm might be useful to someone.
 
-Included in this repository is an implementation of the primality checker function in C++ in `isprime.hpp` (though it should be trivial to implement it in any language that supports arrays and maps), and two command-line utilities for checking numbers: a simple `isprime.cpp` program, and a `countprimes.cpp` program.
+Included in this repository is an implementation of the primality checker function in C++ in `isprime.hpp` (though it should be trivial to implement it in any language that supports arrays and sets), and two command-line utilities for checking numbers: a simple `isprime.cpp` program, and a `countprimes.cpp` program.
 
 ## Building
 
