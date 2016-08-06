@@ -5,6 +5,7 @@
 #include <iostream>
 
 using namespace std;
+
 using namespace nprime;
 
 int main( int argc, char *argv[] )
@@ -16,13 +17,13 @@ int main( int argc, char *argv[] )
     return 0;
   }
 
-  cout << num << " is ..." << flush;
+  cout << num << " is..." << flush;
 
   bool is = isprime( num );
 
   cout << "\r";
 
-  cout << num << " is " << (isprime( num ) ? "" : "not ") << "prime" << endl;
+  cout << num << " is " << (isprimedumb( num ) ? "" : "not ") << "prime" << endl;
 
   return 0;
 }
