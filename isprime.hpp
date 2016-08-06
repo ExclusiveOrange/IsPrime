@@ -36,40 +36,19 @@ namespace nprime {
     // todo: make go faster - we don't need this to be very accurate
     const uint64_t root2Floor = (uint64_t)std::sqrt( num );
 
-    // since primeList is constant, we might benefit from hard-coded unrolled loops,
-    //   so we first check if we'll need to look at the entire list.
+    // spend some time up-front finding the stopping point,
+    //   to avoid an extra boundary check every iteration.
     const auto bound = lower_bound( primeList.begin(), primeList.end(), root2Floor );
-    if( bound == primeList.end() ) {
-
-      // we need to look at the entire list of known primes, and maybe more
-
-      // check all known primes for factorization
-      // this rules out all potential factors in [0, 65536] by only checking 6542 of them.
-      for( const auto p : primeList ) {
-        if( num % p == 0 ) {
-          return false;
-        }
-      }
-
-      // check all odd numbers after the largest known prime,
-      //   up to sqrt(num).
-      for( uint64_t p = primeList.back() + 2; p <= root2Floor; p += 2 ) {
-        if( num % p == 0 ) {
-          return false;
-        }
-      }
-
-    } else {
-
-      // else we only need to check a subset of the known primes
-      auto it = primeList.begin();
-      do {
-        if( num % *it == 0 ) {
-          return false;
-        }
-      } while( ++it != bound );
+    for( auto it = primeList.begin(); it != bound; ++it ) {
+      if( num % *it == 0 ) return false;
     }
 
+    // check all the other odd numbers that may or may not be prime
+    for( uint64_t p = primeList.back() + 2; p <= root2Floor; p += 2 ) {
+      if( num % p == 0 ) {
+        return false;
+      }
+    }
 
     // if we made it this far, num must be prime
     return true;
