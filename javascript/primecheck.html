@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.big { font-size: x-large }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+</style>
+</head>
+<body>
+
+<div style="text-align: center">
+
+<h1>Primality Checker</h1>
+
+<p class="big">Enter a non-negative integer of up to 15 digits:</p>
+
+<input id="inpNum" type="number" min="0" max="999999999999999" required class="big" style="text-align: right">
+<button id="btnCheck" onclick="checkPrimality()" class="big">Check Primality</button>
+
+<p id="out" class="big"></p>
+
+</div>
+
+<script src="isprime.js"></script>
+
+<script>
+var isprimeWorker;
+var out = document.getElementById('out');
+
+function showResult( num, boolIsPrime )
+{
+	out.innerHTML = num.toFixed(0) + " is " +
+		(boolIsPrime ? "" : "not ") + "prime";
+}
+
+function checkPrimality()
+{
+	var inp = document.getElementById('inpNum');
+	var btn = document.getElementById('btnCheck');
+	
+	if( !inp.checkValidity() ) {
+		out.innerHTML = inp.validationMessage;
+	} else {
+
+		var num = Number(inp.value);
+
+		if( typeof(Worker) !== "undefined" ) {
+			if( typeof(isprimeWorker) == "undefined" ) {
+				isprimeWorker = new Worker("isprimeworker.js");
+			}
+			isprimeWorker.onmessage = function( event ) {
+				showResult( num, event.data );
+				btn.disabled = false;
+			};
+			btn.disabled = true;
+			out.innerHTML = "thinking...";
+			isprimeWorker.postMessage( num );
+		} else {
+			var boolIsPrime = isPrime( num );
+			showResult( num, boolIsPrime );
+		}
+	}
+}
+
+function stopWorker()
+{ 
+w.terminate();
+w = undefined;
+}
+</script>
+</div>
+
+</body>
+</html>
