@@ -8,7 +8,7 @@ function isPrime( num ) {
 
   const rt = Math.floor(Math.sqrt( num ));
 
-  for( n = 3; n <= rt; n++ ) {
+  for( n = 3; n <= rt; n += 2 ) {
     if( num % n == 0 ) return false;
   }
 
